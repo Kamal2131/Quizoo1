@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="quiz-container">
+    <h1>Knowledge Check Quiz</h1>
+    <form action="/submit-quiz" method="post">
+        {% for question in questions %}
+        <div class="question-card">
+            <h3>Question {{ loop.index }}: {{ question.question_text }}</h3>
+            <div class="options">
+                {% for option in question.options|fromjson %}  
+                
+            <label>
+            <input type="radio" 
+           name="question_{{ question.id }}" 
+           value="{{ option }}" 
+           required>
+    {{ option }}
+</label><br>
+{% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+</div>
+{% endblock %}

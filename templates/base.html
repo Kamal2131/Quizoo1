@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My App{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+      body {
+        padding-top: 60px; /* offset for fixed navbar */
+      }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="notification" role="alert" aria-live="polite"></div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script>
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            ${message}
+            <span class="close-btn" onclick="this.parentElement.remove()">&times;</span>
+        `;
+        
+        document.body.appendChild(notification);
+        notification.style.display = 'block';
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+</script>
+</body>
+</html>

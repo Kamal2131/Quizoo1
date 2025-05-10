@@ -1,0 +1,26 @@
+<!-- navbar.html -->
+<nav class="navbar">
+  <div class="navbar-container">
+    
+
+    <a href ="" class="navbar-logo">
+        <img src="/static/image/kkg-logo.jpg" alt="Logo" style="height: 40px; vertical-align: middle;">
+          QuizApp
+    </a>
+
+    <!-- Hamburger menu -->
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+    <ul class="navbar-links">
+    {% if logged_in %}
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/logout">Logout</a></li>
+    {% else %}
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+    {% endif %}
+</ul>
+  </div>
+</nav>
